@@ -8,14 +8,9 @@ import cors from "cors";
 const app = express();
 
 
-app.use(cors({
-    origin: 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204
-}));
+app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/user", userRouter);
 app.use("/api/product", productRoute);
 
