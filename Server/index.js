@@ -14,6 +14,7 @@ const corsOptions ={
  }
 
 app.use(cors(corsOptions));
+app.use(express.json())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/user", userRouter);
