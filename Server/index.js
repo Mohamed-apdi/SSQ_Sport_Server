@@ -8,8 +8,8 @@ import cors from "cors";
 const app = express();
 
 const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
+    origin:'http://localhost:5173', 
+    credentials:true,
     optionSuccessStatus:200,
  }
 
