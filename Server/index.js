@@ -20,6 +20,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/user", userRouter);
 app.use("/api/product", productRoute);
 
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
+app.use((req, res, next) => {
+    console.log('Request Origin:', req.headers.origin);
+    next();
+});
+
+
 dbConnection();
 
 app.listen(7000, () => {
