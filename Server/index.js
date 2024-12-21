@@ -1,18 +1,21 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import { userRouter } from './routers/user.js';
 import { dbConnection } from './Config/dbconnect.js';
 import { productRoute } from './routers/product.js';
-import cors from "cors"
+import cors from "cors";
+
 const app = express();
 
-app.use(express.json());
+
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/user", userRouter);
 app.use("/api/product", productRoute);
 
-dbConnection()
-
+dbConnection();
 
 app.listen(7000, () => {
-    console.log("Server listening on 7000")
-})
+    console.log("Server listening on 7000");
+});
