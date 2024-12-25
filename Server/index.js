@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { userRouter } from './routers/user.js';
-import { dbConnection } from './Config/dbconnect.js';
+import  dbConnection from './Config/dbconnect.js';
 import { productRoute } from './routers/product.js';
 import cors from "cors";
 import dotenv from 'dotenv';
