@@ -6,13 +6,9 @@ import { productRoute } from './routers/product.js';
 import cors from "cors";
 
 const app = express();
-const corsOptions = {
-  origin: "http://localhost:5173", // Replace with your React app's URL
-  credentials: true, // Allow credentials (cookies, authorization headers)
-};
 
 app.use(express.json())
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/user", userRouter);
