@@ -1,16 +1,22 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config(); // Load .env variables
 
-const dbUrl = process.env.MONGODB_URI;
-
-export const dbConnection = async () => {
+const dbConnection = async () => {
+    const dbUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/default-db";
     try {
-        await mongoose.connect(dbUrl, { writeConcern : {w: 'majority'}});
-        console.log("Connected to Database");
+        console.log("Attempting to connect to MongoDB...");
+        await mongoose.connect(dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            writeConcern: { w: "majority" },
+        });
+        console.log("Connected to MongoDB successfully!");
     } catch (error) {
-        console.log(error);
-        process.exit(1);
+        console.error("MongoDB connection error:", error.message);
+        process.exit(1); // Exit process with failure
     }
-}
+};
+
+export default dbConnection;
