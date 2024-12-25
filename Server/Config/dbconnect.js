@@ -9,7 +9,6 @@ const dbConnection = async () => {
         console.log("Attempting to connect to MongoDB...");
         await mongoose.connect(dbUrl, {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
             writeConcern: { w: "majority" },
         });
         console.log("Connected to MongoDB successfully!");
