@@ -10,12 +10,12 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     categories: {
-        type: Number,
+        type: String,
         required: true,
     },
-    colors:[{
+    colors:{
         title: String,
-    }],
+    },
     price:{
         type: Number,
     },

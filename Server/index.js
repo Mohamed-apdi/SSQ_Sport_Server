@@ -1,26 +1,30 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import { userRouter } from './routers/user.js';
-import  dbConnection from './Config/dbconnect.js';
 import { productRoute } from './routers/product.js';
-import cors from "cors";
+import cors from 'cors';
 import dotenv from 'dotenv';
+import dbConnection from './Config/dbconnect.js';
 
 dotenv.config();
-const port = process.env.PORT || 7000;
+
 const app = express();
 
-app.use(express.json())
+// Middleware
+app.use(express.json()); // Parse JSON request bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded request bodies
 app.use(cors({
-    origin: 'http://localhost:5173'
+  origin: 'http://localhost:5173', // Allow requests from your frontend
+  credentials: true, // Allow cookies and credentials (if needed)
 }));
-app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/api/user", userRouter);
-app.use("/api/product", productRoute);
 
+// Routes
+app.use('/api/user', userRouter);
+app.use('/api/product', productRoute);
+
+// Database connection
 dbConnection();
 
-app.listen(port, () => {
-    console.log(`Server listening on ${port}`);
+// Start the server
+app.listen(3000, () => {
+  console.log(`Server listening on 3000`);
 });
