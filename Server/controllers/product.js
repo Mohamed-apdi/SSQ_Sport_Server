@@ -143,7 +143,7 @@ export const deleteProduct = async (req, res) => {
     }
 }
 
-// Get products overview
+// Get products overview aggregate
 export const getProductsOverview = async (req, res) => {
     try {
         const productsOverview = await Product.aggregate([

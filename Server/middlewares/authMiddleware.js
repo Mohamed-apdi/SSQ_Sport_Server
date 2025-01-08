@@ -18,7 +18,7 @@ export const isProtect = async (req, res, next) => {
                 next();
             }
         } catch (error) {
-            if (error instanceof Jwt.TokenExpiredError) {
+            if (error instanceof jwt.TokenExpiredError) {
                 return res.status(401).json({ message: "Token expired. Please log in again." });
             }
             return res.status(401).json({ message: "Not authorized. Invalid token." });

@@ -128,7 +128,7 @@ export const logoutUser = async (req, res) => {
     }
 };
 
-// Get user overview
+// Get user overview aggregate
 export const getUserOverview = async (req, res) => {
     try {
         const userOverview = await User.aggregate([
